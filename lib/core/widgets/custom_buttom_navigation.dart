@@ -22,7 +22,7 @@ class CustomButtomNavigation extends StatelessWidget {
     ],
   ),
   child: Padding(
-    padding: const EdgeInsets.fromLTRB(53,23,52,23,),
+    padding: const EdgeInsets.fromLTRB(40,23,40,23,),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pets_finder_app/core/helpers/spacing.dart';
 import 'package:pets_finder_app/core/themes/styles/styles.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+
 
 class PetInfoCard extends StatelessWidget {
   final String imagePath;
@@ -49,12 +51,14 @@ class PetInfoCard extends StatelessWidget {
             padding: const EdgeInsets.only(left: 10, top: 6, bottom: 6),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                imagePath,
+              child: 
+              CachedNetworkImage(
+                imageUrl: imagePath,
                 width: 100,
                 height: double.infinity,
+                placeholder:(context, url) => Icon(Icons.image),
                 fit: BoxFit.cover,
-              ),
+              ),             
             ),
           ),
 
