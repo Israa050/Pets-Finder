@@ -4,6 +4,7 @@ import 'package:pets_finder_app/core/helpers/spacing.dart';
 import 'package:pets_finder_app/core/themes/styles/styles.dart';
 import 'package:pets_finder_app/core/widgets/custom_buttom_navigation.dart';
 import 'package:pets_finder_app/features/home/presentation/widgets/custom_search_field.dart';
+import 'package:pets_finder_app/features/home/presentation/widgets/pets_bloc_builder.dart';
 import 'package:pets_finder_app/features/home/presentation/widgets/pets_list.dart';
 import 'package:pets_finder_app/features/home/presentation/widgets/tabs_list.dart';
 
@@ -42,9 +43,7 @@ class HomeScreen extends StatelessWidget {
 
             verticalPadding(20),
 
-
-            Expanded(child: PetListView())
-
+            PetsBlocBuilder()
             
           ],
         ),

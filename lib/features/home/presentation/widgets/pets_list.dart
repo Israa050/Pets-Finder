@@ -1,14 +1,17 @@
 
 import 'package:flutter/material.dart';
+import 'package:pets_finder_app/features/home/data/models/pet.dart';
 import 'package:pets_finder_app/features/home/presentation/widgets/pet_card.dart';
 
 class PetListView extends StatelessWidget {
-  const PetListView({Key? key}) : super(key: key);
+
+  List<Pet> pets;
+  PetListView({Key? key,required this.pets}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     // 🐾 Example static data
-    final List<Map<String, dynamic>> pets = [
+    final List<Map<String, dynamic>> petsMocked = [
       {
         'image': 'assets/images/kitty-with-monochrome-wall-her 2.png',
         'name': 'Joli',
@@ -63,16 +66,15 @@ class PetListView extends StatelessWidget {
       padding: const EdgeInsets.only(top: 12, bottom: 24),
       itemCount: pets.length,
       itemBuilder: (context, index) {
-        final pet = pets[index];
+       // final pet = petsMocked[index];
         return PetInfoCard(
-          imagePath: pet['image'],
-          name: pet['name'],
-          gender: pet['gender'],
-          age: pet['age'],
-          location: pet['location'],
-          isFavorite: pet['favorite'],
+          imagePath: pets[index].url ?? '',
+          name: pets[index].breeds![0].name?? '',
+          age: pets[index].breeds![0].lifeSpan?? '5 months',
+          location: pets[index].breeds![0].origin?? '',
+          isFavorite: false,
+          gender:  'Female',
           onFavoriteTap: () {
-            debugPrint('Tapped favorite on ${pet['name']}');
           },
         );
       },
