@@ -22,7 +22,8 @@ class _PetsBlocBuilderState extends State<PetsBlocBuilder> {
   }
 
   void getPets(){
-    context.read<HomeCubit>().getPets();
+    //context.read<HomeCubit>().favorites();
+    context.read<HomeCubit>().getImages();
   }
   @override
   Widget build(BuildContext context) {
@@ -36,6 +37,7 @@ class _PetsBlocBuilderState extends State<PetsBlocBuilder> {
 
           case Succuss():
           return Expanded(child: PetListView(pets: state.pets,));
+          //return SizedBox.expand();
 
           case Faliure():
           return Expanded(
@@ -43,6 +45,15 @@ class _PetsBlocBuilderState extends State<PetsBlocBuilder> {
               child: Text(state.error.errors[0]),
             ),
           );
+
+          case FavoriteImae():
+          return Center(
+            child: Text('Added to favorite list ${state.message}'),
+          );
+
+          case Favorites():
+          //return Expanded(child: PetListView(pets: state.favorites));
+          return SizedBox.expand();
 
         }
 

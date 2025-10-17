@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pets_finder_app/core/helpers/spacing.dart';
+import 'package:pets_finder_app/core/themes/colors/app_colors.dart';
 import 'package:pets_finder_app/core/themes/styles/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-
 
 class PetInfoCard extends StatelessWidget {
   final String imagePath;
@@ -51,21 +51,35 @@ class PetInfoCard extends StatelessWidget {
             padding: const EdgeInsets.only(left: 10, top: 6, bottom: 6),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: 
-              CachedNetworkImage(
+              child: CachedNetworkImage(
                 imageUrl: imagePath,
                 width: 100,
                 height: double.infinity,
-                placeholder:(context, url) => Icon(Icons.image),
                 fit: BoxFit.cover,
-              ),             
+                placeholder: (context, error,) {
+                  return Center(child: Icon(Icons.image,color: AppColors.lightGrey,));
+                },
+              ),
+
+              // CachedNetworkImage(
+              //   imageUrl: imagePath,
+              //   width: 100,
+              //   height: double.infinity,
+              //   placeholder:(context, url) => Icon(Icons.image),
+              //   fit: BoxFit.cover,
+              // ),
             ),
           ),
 
           /// 📝 Text + Favorite section
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(left: 16, right: 12, top: 8, bottom: 8),
+              padding: const EdgeInsets.only(
+                left: 16,
+                right: 12,
+                top: 8,
+                bottom: 8,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -73,10 +87,7 @@ class PetInfoCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        name,
-                        style:TextStyles.font18BlackBold,
-                      ),
+                      Text(name, style: TextStyles.font18BlackBold),
                       GestureDetector(
                         onTap: onFavoriteTap,
                         child: Icon(
@@ -88,26 +99,17 @@ class PetInfoCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
 
-                  Text(
-                    gender,
-                    style: TextStyles.font14DarkGreyRegular,
-                  ),
+                  Text(gender, style: TextStyles.font14DarkGreyRegular),
                   const SizedBox(height: 2),
 
-                  Text(
-                    age,
-                    style: TextStyles.font14DarkGreyRegular,
-                  ),
+                  Text(age, style: TextStyles.font14DarkGreyRegular),
                   const SizedBox(height: 2),
 
                   Row(
                     children: [
                       SvgPicture.asset('assets/svgs/location.svg'),
                       horizontalPadding(2),
-                      Text(
-                        location,
-                        style: TextStyles.font14DarkGreyRegular,
-                      ),
+                      Text(location, style: TextStyles.font14DarkGreyRegular),
                     ],
                   ),
                 ],
