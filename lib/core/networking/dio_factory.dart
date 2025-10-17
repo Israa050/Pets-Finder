@@ -29,7 +29,7 @@ class DioFactory {
   static void addDioHeaders() async {
   dio?.options.headers = {
     'Accept': 'application/json',
-    'API-Key': 'live_23O8T2qvHwGPkFYNbldtVPaavcv7YzLwcJwaZ1pvs9V3zq5p6KXctFlEm70zhjXv',
+    'api_key': 'live_23O8T2qvHwGPkFYNbldtVPaavcv7YzLwcJwaZ1pvs9V3zq5p6KXctFlEm70zhjXv',
   };
 }
 

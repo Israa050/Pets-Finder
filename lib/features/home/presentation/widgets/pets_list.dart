@@ -1,11 +1,15 @@
 
 import 'package:flutter/material.dart';
-import 'package:pets_finder_app/features/home/data/models/pet.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pets_finder_app/features/home/cubit/home_cubit.dart';
+import 'package:pets_finder_app/features/home/data/models/favorite_request_body.dart';
+import 'package:pets_finder_app/features/home/data/models/image.dart';
 import 'package:pets_finder_app/features/home/presentation/widgets/pet_card.dart';
 
 class PetListView extends StatelessWidget {
 
-  List<Pet> pets;
+  List<PetImage> pets;
+  //List<Favorite> pets;
   PetListView({Key? key,required this.pets}) : super(key: key);
 
   @override
@@ -69,12 +73,13 @@ class PetListView extends StatelessWidget {
        // final pet = petsMocked[index];
         return PetInfoCard(
           imagePath: pets[index].url ?? '',
-          name: pets[index].breeds![0].name?? '',
-          age: pets[index].breeds![0].lifeSpan?? '5 months',
-          location: pets[index].breeds![0].origin?? '',
+          name:  'Snowy',
+          age: '5 months',
+          location: 'US',
           isFavorite: false,
           gender:  'Female',
-          onFavoriteTap: () {
+          onFavoriteTap: () async{
+            context.read<HomeCubit>().favoriteImage(FavoriteRequestBody(imageId: pets[index].id));
           },
         );
       },

@@ -3,5 +3,5 @@ class Routes {
   static const String onBoardingScreen = '/onBoardingScreen';
   static const String homeScreen = '/homeScreen';
   static const String productDetails = '/pet_details';
-  static const String review = '/favorite';
+  static const String favorite = '/favorite';
 }

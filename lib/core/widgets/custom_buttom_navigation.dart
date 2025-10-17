@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pets_finder_app/core/helpers/extensions.dart';
+import 'package:pets_finder_app/core/routing/routes.dart';
 
 class CustomButtomNavigation extends StatelessWidget {
   const CustomButtomNavigation({super.key});
@@ -27,8 +29,8 @@ class CustomButtomNavigation extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
     
-        SvgPicture.asset('assets/svgs/home.svg'),
-        SvgPicture.asset('assets/svgs/heart.svg'),
+        GestureDetector(onTap: () => context.pushReplacementNamed(Routes.homeScreen), child: SvgPicture.asset('assets/svgs/home.svg')),
+        GestureDetector(onTap: () => context.pushReplacementNamed(Routes.favorite), child: SvgPicture.asset('assets/svgs/heart.svg')),
         SvgPicture.asset('assets/svgs/messages.svg'),
         SvgPicture.asset('assets/svgs/profile-circle.svg'),
       ],

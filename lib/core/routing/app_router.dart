@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pets_finder_app/core/di/dependency_injection.dart';
 import 'package:pets_finder_app/core/routing/routes.dart';
 import 'package:pets_finder_app/features/home/cubit/home_cubit.dart';
+import 'package:pets_finder_app/features/home/presentation/screens/favorite_screen.dart';
 import 'package:pets_finder_app/features/home/presentation/screens/home_screen.dart';
 
 
@@ -21,7 +22,9 @@ class AppRouter {
             child: HomeScreen(),
           ),
         );
-     
+
+      case   Routes.favorite:
+      return MaterialPageRoute(builder: (_)=> FavoriteScreen());
     }
     return null;
   }

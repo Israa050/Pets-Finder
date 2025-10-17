@@ -3,7 +3,7 @@ import 'package:pets_finder_app/core/di/dependency_injection.dart';
 import 'package:pets_finder_app/core/routing/app_router.dart';
 import 'package:pets_finder_app/core/routing/routes.dart';
 import 'package:pets_finder_app/core/themes/colors/app_colors.dart';
-import 'package:pets_finder_app/features/home/presentation/screens/home_screen.dart';
+import 'package:pets_finder_app/features/home/presentation/screens/favorite_screen.dart';
 
 void main()  {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Pets Finder App',
       theme: ThemeData(primaryColor: AppColors.primaryGreen),
-     // home: HomeScreen(),
+      //home: FavoriteScreen(),
       initialRoute: Routes.homeScreen,
       onGenerateRoute: appRouter.generateRoute,
     );
