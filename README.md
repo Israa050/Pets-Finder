@@ -80,4 +80,14 @@ flutter test
   ---
 
 
+## 🖼️ Screenshots
+
+| OnBoarding | Home | Favorite |
+|:------:|:-----------:|:-----:|
+| ![Splash](assets/images/splash.png) | ![OnBoarding](assets/images/on_boarding.png) | ![Login](assets/images/login.png) |
+
+---
+
+
+
 
