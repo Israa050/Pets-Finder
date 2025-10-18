@@ -42,17 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return 
-    // Scaffold(
-    //   appBar: AppBar(
-    //     title: Text('Find Your Forever Pet', style: TextStyles.font24BlackBold),
-    //     actions: [
-    //       Padding(
-    //         padding: const EdgeInsets.only(right: 16),
-    //         child: SvgPicture.asset('assets/svgs/notification.svg'),
-    //       ),
-    //     ],
-    //   ),
-    //   body:
        Padding(
         padding: const EdgeInsets.only(left: 16, right: 16),
         child: Column(
