@@ -51,6 +51,35 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<List<Breeds>> getBreeds() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<List<Breeds>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'breeds',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<Breeds> _value;
+    try {
+      _value = _result.data!
+          .map((dynamic i) => Breeds.fromJson(i as Map<String, dynamic>))
+          .toList();
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<List<PetImage>> getImages() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -90,7 +119,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'favourites?&api_key=live_23O8T2qvHwGPkFYNbldtVPaavcv7YzLwcJwaZ1pvs9V3zq5p6KXctFlEm70zhjXv',
+            'favourites',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -117,7 +146,7 @@ class _ApiService implements ApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'favourites?&api_key=live_23O8T2qvHwGPkFYNbldtVPaavcv7YzLwcJwaZ1pvs9V3zq5p6KXctFlEm70zhjXv',
+            'favourites',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -146,7 +175,7 @@ class _ApiService implements ApiService {
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'favourites/${favouriteId}?&api_key=live_23O8T2qvHwGPkFYNbldtVPaavcv7YzLwcJwaZ1pvs9V3zq5p6KXctFlEm70zhjXv',
+            'favourites/${favouriteId}',
             queryParameters: queryParameters,
             data: _data,
           )

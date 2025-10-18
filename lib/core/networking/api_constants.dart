@@ -4,6 +4,7 @@ class ApiConstants {
 
   static const String imagesSearch = "images/search";
   static const String favourites = "favourites";
+  static const String breeds = "breeds";
  
   
 }

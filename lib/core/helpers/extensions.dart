@@ -3,6 +3,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pets_finder_app/core/networking/api_error_model.dart';
+import 'package:pets_finder_app/features/home/data/models/pet.dart';
 
 extension Navigation on BuildContext {
   Future<dynamic> pushNamed(String routeName, {Object? arguments}) {
@@ -61,5 +62,21 @@ extension DioExceptionTypeExtension on DioException {
     } else {
       return unknown();
     }
+  }
+}
+
+extension ImageUrlX on String {
+  String toImageUrl() {
+    return 'https://cdn2.thecatapi.com/images/$this.jpg';
+  }
+}
+
+extension FilterBreeds on List<Breeds> {
+  List<Breeds> filter(String keyword) {
+    if (keyword.isEmpty) return this;
+    final lowerKey = keyword.toLowerCase();
+    return where((breed) => 
+      breed.name!.toLowerCase().contains(lowerKey)
+    ).toList();
   }
 }

@@ -39,6 +39,14 @@ class TextStyles{
       static TextStyle font14DarkGreyRegular =
     base(size: 14, fontWeight: FontWeightHelper.regular, color: AppColors.darkGrey);
 
+       static TextStyle font32BlackBold =
+    base(size: 32, fontWeight: FontWeightHelper.bold, color: Colors.black);
+
+      static TextStyle font18WhiteMedium =
+    base(size: 18, fontWeight: FontWeightHelper.medium, color: Colors.white);
+
+
+
 
 
 

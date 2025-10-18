@@ -6,6 +6,7 @@ import 'package:pets_finder_app/core/networking/api_service.dart';
 import 'package:pets_finder_app/core/networking/dio_factory.dart';
 import 'package:pets_finder_app/features/home/cubit/home_cubit.dart';
 import 'package:pets_finder_app/features/home/data/repos/home_repo.dart';
+import 'package:pets_finder_app/features/home/domain/repos/home_repo_interface.dart';
 
 
 
@@ -17,6 +18,6 @@ Future<void> setupGetIt() async {
  
   // home
   getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
-  getIt.registerLazySingleton<HomeRepo>(() => HomeRepo(apiService: getIt()));
+  getIt.registerLazySingleton<HomeRepoInterface>(() => HomeRepo(apiService: getIt()));
   getIt.registerFactory<HomeCubit>(() => HomeCubit(homeRepo: getIt()));
 }

@@ -25,18 +25,21 @@ abstract class ApiService {
   @GET('${ApiConstants.imagesSearch}?limit=10&breed_ids=beng&api_key=live_23O8T2qvHwGPkFYNbldtVPaavcv7YzLwcJwaZ1pvs9V3zq5p6KXctFlEm70zhjXv')
   Future<List<Pet>> getPets();
 
+  @GET(ApiConstants.breeds)
+  Future<List<Breeds>> getBreeds();
+
 
   @GET('${ApiConstants.imagesSearch}?limit=10')
   Future<List<PetImage>> getImages();
 
 
-  @POST('${ApiConstants.favourites}?&api_key=live_23O8T2qvHwGPkFYNbldtVPaavcv7YzLwcJwaZ1pvs9V3zq5p6KXctFlEm70zhjXv')
+  @POST(ApiConstants.favourites)
   Future<FavoriteResponseBody> favoriteImage(@Body() FavoriteRequestBody body);
 
-  @GET('${ApiConstants.favourites}?&api_key=live_23O8T2qvHwGPkFYNbldtVPaavcv7YzLwcJwaZ1pvs9V3zq5p6KXctFlEm70zhjXv')
+  @GET(ApiConstants.favourites)
   Future<List<Favorite>> getFavorites();
 
-  @DELETE('${ApiConstants.favourites}/{favouriteId}?&api_key=live_23O8T2qvHwGPkFYNbldtVPaavcv7YzLwcJwaZ1pvs9V3zq5p6KXctFlEm70zhjXv')
+  @DELETE('${ApiConstants.favourites}/{favouriteId}')
   Future<FavoriteResponseBody> deleteFromFavorite(@Path('favouriteId') int favouriteId);
 
 }

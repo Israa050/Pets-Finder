@@ -4,6 +4,7 @@ import 'package:pets_finder_app/core/helpers/spacing.dart';
 import 'package:pets_finder_app/core/themes/colors/app_colors.dart';
 import 'package:pets_finder_app/core/themes/styles/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:pets_finder_app/features/home/data/models/pet.dart';
 
 class PetInfoCard extends StatelessWidget {
   final String imagePath;
@@ -11,11 +12,14 @@ class PetInfoCard extends StatelessWidget {
   final String gender;
   final String age;
   final String location;
-  final bool isFavorite;
+  bool isFavorite = false;
   final VoidCallback? onFavoriteTap;
 
-  const PetInfoCard({
+  final Breeds breeds;
+
+   PetInfoCard({
     Key? key,
+    required this.breeds,
     required this.imagePath,
     required this.name,
     required this.gender,
@@ -56,18 +60,17 @@ class PetInfoCard extends StatelessWidget {
                 width: 100,
                 height: double.infinity,
                 fit: BoxFit.cover,
-                placeholder: (context, error,) {
-                  return Center(child: Icon(Icons.image,color: AppColors.lightGrey,));
+                placeholder: (context, error) {
+                  return Center(
+                    child: Icon(Icons.image, color: AppColors.lightGrey),
+                  );
+                },
+                errorWidget: (context, url, error) {
+                  return Center(
+                    child: Icon(Icons.error_rounded, color: AppColors.red),
+                  );
                 },
               ),
-
-              // CachedNetworkImage(
-              //   imageUrl: imagePath,
-              //   width: 100,
-              //   height: double.infinity,
-              //   placeholder:(context, url) => Icon(Icons.image),
-              //   fit: BoxFit.cover,
-              // ),
             ),
           ),
 
@@ -90,9 +93,18 @@ class PetInfoCard extends StatelessWidget {
                       Text(name, style: TextStyles.font18BlackBold),
                       GestureDetector(
                         onTap: onFavoriteTap,
-                        child: Icon(
-                          isFavorite ? Icons.favorite : Icons.favorite_border,
-                          color: isFavorite ? Colors.red : Colors.grey,
+                        child: AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 300),
+                          transitionBuilder: (child, anim) =>
+                              ScaleTransition(scale: anim, child: child),
+                          child: Icon(
+                            isFavorite ? Icons.favorite : Icons.favorite_border,
+                            key: ValueKey(
+                              isFavorite,
+                            ),
+                            color: isFavorite ? Colors.red : Colors.grey,
+                            size: 30,
+                          ),
                         ),
                       ),
                     ],

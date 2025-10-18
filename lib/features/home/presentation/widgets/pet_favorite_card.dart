@@ -1,16 +1,15 @@
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pets_finder_app/core/helpers/spacing.dart';
+import 'package:pets_finder_app/core/themes/colors/app_colors.dart';
+import 'package:pets_finder_app/features/home/data/models/favorites.dart';
 
-class PetFavoriteCard extends StatefulWidget {
-  const PetFavoriteCard({Key? key}) : super(key: key);
+class PetFavoriteCard extends StatelessWidget {
+  Favorite favoriteImage;
+  void Function()? onTap;
+  PetFavoriteCard({Key? key, required this.favoriteImage,required this.onTap}) : super(key: key);
 
-  @override
-  State<PetFavoriteCard> createState() => _PetFavoriteCardState();
-}
-
-class _PetFavoriteCardState extends State<PetFavoriteCard> {
   bool isFavorite = false;
 
   @override
@@ -38,12 +37,24 @@ class _PetFavoriteCardState extends State<PetFavoriteCard> {
             /// 🐾 Image section
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                'assets/images/kitty-with-monochrome-wall-her 2.png',
-                height: 140,
+              child: CachedNetworkImage(
+                imageUrl: favoriteImage.image?.url ?? '',
+                height: 200,
                 width: double.infinity,
                 fit: BoxFit.cover,
+                placeholder: (context, url) {
+                   return Center(child: Icon(Icons.image,color: AppColors.lightGrey,),);
+                },
+                errorWidget: (context, url, error) {
+                  return Center(child: Icon(Icons.error,color: AppColors.red,),);
+                },
               ),
+              // Image.asset(
+              //   'assets/images/kitty-with-monochrome-wall-her 2.png',
+              //   height: 140,
+              //   width: double.infinity,
+              //   fit: BoxFit.cover,
+              // ),
             ),
             const SizedBox(height: 8),
 
@@ -54,9 +65,9 @@ class _PetFavoriteCardState extends State<PetFavoriteCard> {
                 // Text info on the left
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children:  [
+                  children: [
                     Text(
-                      'Joly',
+                      'Tom',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -65,14 +76,11 @@ class _PetFavoriteCardState extends State<PetFavoriteCard> {
                     SizedBox(height: 4),
                     Row(
                       children: [
-                       SvgPicture.asset('assets/svgs/location.svg'),
-                       horizontalPadding(2),
+                        SvgPicture.asset('assets/svgs/location.svg'),
+                        horizontalPadding(2),
                         Text(
                           '1.6 km away',
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 13,
-                          ),
+                          style: TextStyle(color: Colors.grey, fontSize: 13),
                         ),
                       ],
                     ),
@@ -81,22 +89,22 @@ class _PetFavoriteCardState extends State<PetFavoriteCard> {
 
                 // ❤️ Favorite icon on the right
                 GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      isFavorite = !isFavorite;
-                    });
-                  },
-                  child: Icon(
-                    isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: isFavorite ? Colors.red : Colors.grey,
-                    size: 24,
+                  onTap: onTap,
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6),
+                      color: Color(0xffE1F8F9),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/svgs/heart_selected.svg',
+                    ),
                   ),
                 ),
               ],
             ),
-          ],
-        ),
-      ),
-    );
+        ],),
+      ));
   }
 }
