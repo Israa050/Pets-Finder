@@ -2,6 +2,7 @@
 
 
 import 'package:json_annotation/json_annotation.dart';
+import 'package:pets_finder_app/features/home/data/models/image.dart';
 
 part 'pet.g.dart';
 
@@ -58,9 +59,15 @@ class Breeds {
   String? wikipediaUrl;
   int? hypoallergenic;
   String? referenceImageId;
+  PetImage? image;
+  bool isFavorite;
+  int favoriteId;
+
 
   Breeds(
       {this.weight,
+      this.isFavorite = false,
+      this.favoriteId = -1,
       this.id,
       this.name,
       this.cfaUrl,
@@ -96,7 +103,7 @@ class Breeds {
       this.shortLegs,
       this.wikipediaUrl,
       this.hypoallergenic,
-      this.referenceImageId});
+      this.referenceImageId,this.image});
 
   factory Breeds.fromJson(Map<String, dynamic> json) => _$BreedsFromJson(json);
 }

@@ -64,6 +64,9 @@ Breeds _$BreedsFromJson(Map<String, dynamic> json) => Breeds(
   wikipediaUrl: json['wikipediaUrl'] as String?,
   hypoallergenic: (json['hypoallergenic'] as num?)?.toInt(),
   referenceImageId: json['referenceImageId'] as String?,
+  image: json['image'] == null
+      ? null
+      : PetImage.fromJson(json['image'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$BreedsToJson(Breeds instance) => <String, dynamic>{
@@ -104,6 +107,7 @@ Map<String, dynamic> _$BreedsToJson(Breeds instance) => <String, dynamic>{
   'wikipediaUrl': instance.wikipediaUrl,
   'hypoallergenic': instance.hypoallergenic,
   'referenceImageId': instance.referenceImageId,
+  'image': instance.image,
 };
 
 Weight _$WeightFromJson(Map<String, dynamic> json) => Weight(

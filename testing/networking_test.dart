@@ -13,7 +13,7 @@ void main(){
 
   test('Test Home Repo Fetch Data From API', ()async{
     HomeRepo homeRepo = getIt<HomeRepo>();
-    final response = await homeRepo.getPets();
+    final response = await homeRepo.getBreeds();
     response.when(onSuccess: (data) {
      expect(response.runtimeType, ApiSuccess<List<Pet>>);
     },onError: (error){

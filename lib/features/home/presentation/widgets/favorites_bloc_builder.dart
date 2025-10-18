@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pets_finder_app/features/home/cubit/home_cubit.dart';
+import 'package:pets_finder_app/features/home/presentation/widgets/empty_filterd_breeds.dart';
 import 'package:pets_finder_app/features/home/presentation/widgets/favorites_grid_view.dart';
 
 class FavoritesBlocBuilder extends StatefulWidget {
@@ -21,7 +22,7 @@ class _FavoritesBlocBuilderState extends State<FavoritesBlocBuilder> {
   }
 
   void getFavorites(){
-    context.read<HomeCubit>().getImages();
+    context.read<HomeCubit>().fetchFavorites();
   }
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,10 @@ class _FavoritesBlocBuilderState extends State<FavoritesBlocBuilder> {
        return  Center(child: CircularProgressIndicator(),);
       }
       else if(state is Favorites){
-        return Expanded(child: FavoritesGridView());
+        return Expanded(child: FavoritesGridView(favorites: state.favorites,));
+      }
+      else if(state is EmptyFilteredBreedsState){
+        return EmptyFilterdBreeds();
       }
       else{
         return Center(

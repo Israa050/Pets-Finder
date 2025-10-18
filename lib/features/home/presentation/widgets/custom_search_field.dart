@@ -31,7 +31,7 @@ class SearchField extends StatelessWidget {
           hintStyle: TextStyles.font16GreyRegular,
           suffixIcon: GestureDetector(
             onTap: onSuffixTap,
-            child: const Icon(Icons.close, color: Colors.black),
+            child: Icon(Icons.close),
           ),
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(vertical: 14),
