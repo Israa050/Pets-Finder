@@ -84,7 +84,7 @@ flutter test
 
 | OnBoarding | Home | Favorite |
 |:------:|:-----------:|:-----:|
-| ![Splash](assets/images/splash.png) | ![OnBoarding](assets/images/on_boarding.png) | ![Login](assets/images/login.png) |
+| ![Splash](assets/images/onBoarding.png) | ![OnBoarding](assets/images/home.png) | ![Login](assets/images/favorite.png) |
 
 ---
 
