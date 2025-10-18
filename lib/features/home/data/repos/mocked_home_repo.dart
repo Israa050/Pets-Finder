@@ -9,15 +9,15 @@ import 'package:pets_finder_app/features/home/data/models/pet.dart';
 import 'package:pets_finder_app/features/home/domain/repos/home_repo_interface.dart';
 
 class MockedHomeRepo extends HomeRepoInterface {
-  final List<Favorite> _favorites = [];
-  final List<Breeds> _mockedBreeds = [
-    Breeds(id: '1', name: 'Golden Retriever'),
-    Breeds(id: '2', name: 'Bulldog'),
-    Breeds(id: '3', name: 'Poodle'),
-    Breeds(id: '4', name: 'German Shepherd'),
+   final List<Breeds> _mockBreeds = [
+    Breeds(id: '1', name: 'Golden Retriever', image: PetImage(id: 'img1', url: 'https://...')),
+    Breeds(id: '2', name: 'Bulldog', image: PetImage(id: 'img2', url: 'https://...')),
+    Breeds(id: '3', name: 'Poodle', image: PetImage(id: 'img3', url: 'https://...')),
   ];
 
+  final List<Favorite> _favorites = [];
   int _nextFavoriteId = 1;
+
 
   // Simulate network delay
   Future<void> _simulateNetwork() async {
@@ -67,7 +67,7 @@ class MockedHomeRepo extends HomeRepoInterface {
   @override
   Future<ApiResult<List<Breeds>>> getBreeds() async {
     await _simulateNetwork();
-    return ApiResult.success(List.from(_mockedBreeds));
+    return ApiResult.success(List.from(_mockBreeds));
   }
 
   @override
