@@ -56,7 +56,9 @@ class _PetsBlocBuilderState extends State<PetsBlocBuilder> {
             return Expanded(child: PetListView(breeds: state.breeds));
 
           case EmptyFilteredBreedsState():
-            return EmptyFilterdBreeds();
+            return EmptyFilterdBreeds(
+              key: const Key('no_results_widget'), // ✅ Add this
+            );
         }
       },
     );

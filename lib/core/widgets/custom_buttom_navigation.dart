@@ -72,6 +72,7 @@ class _CustomButtomNavigationState extends State<CustomButtomNavigation> {
               final isSelected = selectedIndex == index;
 
               return GestureDetector(
+                key: Key('bottom_nav_$index'), // <- Add this
                 onTap: () => setState(() => selectedIndex = index),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,

@@ -34,6 +34,7 @@ class _FavoritesGridViewState extends State<FavoritesGridView> {
       ),
       itemBuilder: (context, index) {
         return  PetFavoriteCard(
+          key: Key('favorite_list_item_${_favorites[index].id}'),
           favoriteImage: _favorites[index],
           onTap: () {
             context.read<HomeCubit>().removeImageFromFavorite(widget.favorites[index].id);

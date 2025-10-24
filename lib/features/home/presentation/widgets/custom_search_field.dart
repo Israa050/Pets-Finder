@@ -24,6 +24,7 @@ class SearchField extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: TextField(
+        key: const Key('home_search_field'),
         controller: controller,
         decoration: InputDecoration(
           hintText: hintText,
