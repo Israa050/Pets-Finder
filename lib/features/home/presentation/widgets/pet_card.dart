@@ -32,6 +32,7 @@ class PetInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: Key('pet_item_${breeds.id}'),
       height: 124,
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -92,6 +93,7 @@ class PetInfoCard extends StatelessWidget {
                     children: [
                       Text(name, style: TextStyles.font18BlackBold),
                       GestureDetector(
+                        key: Key('favorite_icon_${breeds.id ?? name}'), // ✅ Favorite icon key
                         onTap: onFavoriteTap,
                         child: AnimatedSwitcher(
                           duration: const Duration(milliseconds: 300),
